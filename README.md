@@ -4,8 +4,11 @@ Clone this repository
 `git clone git@github.com:c-x-g/datastack_kubernetes_poc.git`
 
 To run the Kubernetes components locally use these commands:
-`cd datastack_kubernetes_poc/kubernetes_files`
-`kubectl apply -f ui -f api`
+
+```
+cd datastack_kubernetes_poc/kubernetes_files
+kubectl apply -f ui -f api
+```
 
 You can view how to access the ui component locally by finding the service ip address
 `kubectl get svc`
