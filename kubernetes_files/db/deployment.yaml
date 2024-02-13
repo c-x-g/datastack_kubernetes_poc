@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-component
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-component
+  template:
+    metadata:
+      labels:
+        app: db-component
+    spec:
+      containers:
+        - name: db
+          image: carlguan/datastack-poc-db-component:latest
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "sleep 5; psql -U postgres -d postgres -a -f init.sql"]
+          env:
+            - name: POSTGRES_PASSWORD
+              value: "postgres"
+      volumes:
+      - name: postgres-pvc
+        persistentVolumeClaim:
+          claimName: db-pvc
+

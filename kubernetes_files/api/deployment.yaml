@@ -15,6 +15,10 @@ spec:
       containers:
         - name: api
           image: carlguan/datastack-poc-api-component:latest
+          envFrom:
+             # read environment variables from configMap db-env-config for database access
+             - configMapRef:
+                 name: db-env-config
           env:
             - name: MY_NODE_NAME
               valueFrom:
