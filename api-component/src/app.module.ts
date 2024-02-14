@@ -13,7 +13,7 @@ import { ContainerModule } from './container/container.module';
       host: process.env.DB_HOST,
       port: parseInt(process.env.DB_PORT),
       username: process.env.DB_USER,
-      password: 'postgres', // note that this is not the intended practice, will remove asap
+      password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       autoLoadEntities: true,
       synchronize: false,

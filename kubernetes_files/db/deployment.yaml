@@ -21,9 +21,11 @@ spec:
                 command: ["/bin/sh", "-c", "sleep 5; psql -U postgres -d postgres -a -f init.sql"]
           env:
             - name: POSTGRES_PASSWORD
-              value: "postgres"
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: POSTGRES_PASSWORD
       volumes:
       - name: postgres-pvc
         persistentVolumeClaim:
           claimName: db-pvc
-
