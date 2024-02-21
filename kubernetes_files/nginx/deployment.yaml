@@ -1,0 +1,26 @@
+# this is the reverse proxy for loki-grafana
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-component
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-component
+  template:
+    metadata:
+      labels:
+        app: nginx-component
+    spec:
+      containers:
+        - name: nginx 
+          image: carlguan/datastack-poc-reverse-proxy-component:latest
+          env:
+            - name: PORT
+              value: "8082"
+            - name: ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: loki-gateway-auth
+                  key: ADMIN_PASSWORD
