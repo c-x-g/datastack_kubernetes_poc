@@ -19,8 +19,8 @@ spec:
           env:
             - name: PORT
               value: "8082"
-            - name: ADMIN_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: loki-gateway-auth
-                  key: ADMIN_PASSWORD
+                #  - name: ADMIN_PASSWORD
+                #    valueFrom:
+                #      secretKeyRef:
+                #        name: loki-gateway-auth
+                #        key: ADMIN_PASSWORD
