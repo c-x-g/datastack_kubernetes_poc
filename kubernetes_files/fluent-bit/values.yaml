@@ -12,8 +12,7 @@ args:
 env:
   # Note that for security reasons you should fetch the credentials through a Kubernetes Secret https://kubernetes.io/docs/concepts/configuration/secret/ . You may use the envFrom for this.
   - name: FLUENT_LOKI_URL
-    value: http://admin:b4OgoT2P31vps88Q6Nk09m5crj24OyTmsM9XbSep@loki-gateway.loki.svc.cluster.local/loki/api/v1/push
-
+    value: http://nginx-component/loki/api/v1/push
 
 config:
   inputs: |
