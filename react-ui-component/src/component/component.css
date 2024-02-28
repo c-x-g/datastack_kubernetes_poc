@@ -1,0 +1,27 @@
+/* a CSS file is most useful for 
+ * frequently used components where 
+ * a central file to style everything is ideal 
+ * the CSS file can be imported into any react component file that 
+ *
+ * needs to use it
+ *
+ * styled components are better for more specific use 
+ * cases that are only used in one or a few files for 
+ * more specific purposes
+ * */
+
+button {
+  border-radius: 8px;
+  margin: 5% 0 0 50%; /* the order is top right bottom left */
+  width: 200px;
+  height: 100px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+th,
+td {
+  padding: 15px;
+  font-size: 20px;
+  border: 2px solid black;
+}

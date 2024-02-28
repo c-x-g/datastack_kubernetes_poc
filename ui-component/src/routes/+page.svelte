@@ -3,14 +3,16 @@
 
 <script>
     let resp
-	async function getContainer() {
-        const response = await fetch(`/api/container`)
+	async function createContainerMetadata() {
+        const response = await fetch(`/api/container`, {
+            method: "POST"
+        })
         const res = await response.json()
         return res
 	}
 
     function handleClick() {
-        resp = getContainer();
+        resp = createContainerMetadata();
     }
 </script>
 

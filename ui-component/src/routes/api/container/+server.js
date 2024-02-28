@@ -1,4 +1,6 @@
-export async function GET() {
-  const response = await fetch("http://api-component/container");
+export async function POST() {
+  const response = await fetch('http://api-component/container', {
+    method: 'POST',
+  });
   return response;
 }

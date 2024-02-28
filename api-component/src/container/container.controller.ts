@@ -1,12 +1,12 @@
-import { Get, Controller } from '@nestjs/common';
-import { ContainerService } from 'src/container/container.service';
+import { Get, Post, Controller } from '@nestjs/common';
+import { ContainerService } from './container.service';
 
 @Controller('container')
 export class ContainerController {
   constructor(private containerService: ContainerService) {}
 
-  @Get()
-  async getContainerInfo() {
+  @Post()
+  async createContainerInfo() {
     await this.containerService.createContainer_Metadata();
 
     return {
@@ -16,5 +16,11 @@ export class ContainerController {
       ip_addr: process.env.MY_POD_IP,
       svc_account: process.env.MY_POD_SERVICE_ACCOUNT,
     };
+  }
+
+  @Get()
+  async getAllContainerInfo() {
+    let all_CMData = await this.containerService.get_all_CMData();
+    return all_CMData;
   }
 }

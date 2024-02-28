@@ -19,13 +19,15 @@ export class ContainerService {
     cm.service_account = process.env.MY_POD_SERVICE_ACCOUNT;
     cm.timestamp = new Date();
 
-
     await this.container_MetadataRepository.save(cm);
-
-
 
     // should include error handling but not priority
 
     return cm
+  }
+
+
+  async get_all_CMData(): Promise<Container_Metadata[]> {
+      return this.container_MetadataRepository.find();
   }
 }
