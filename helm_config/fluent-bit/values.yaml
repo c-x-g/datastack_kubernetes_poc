@@ -2,18 +2,15 @@ image:
   # Here we use the Docker image which has the plugin installed
   repository: grafana/fluent-bit-plugin-loki
   tag: main-e2ed1c0
-
 args:
   - "-e"
   - "/fluent-bit/bin/out_grafana_loki.so"
   - --workdir=/fluent-bit/etc
   - --config=/fluent-bit/etc/conf/fluent-bit.conf
-
 env:
   # Note that for security reasons you should fetch the credentials through a Kubernetes Secret https://kubernetes.io/docs/concepts/configuration/secret/ . You may use the envFrom for this.
   - name: FLUENT_LOKI_URL
     value: http://nginx-component/loki/api/v1/push
-
 config:
   inputs: |
     [INPUT]
@@ -24,7 +21,6 @@ config:
         multiline.parser docker, cri
         Mem_Buf_Limit 5MB
         Skip_Long_Lines On
-
   outputs: |
     [Output]
         Name grafana-loki
@@ -37,7 +33,3 @@ config:
         LineFormat json
         LogLevel info
         AutoKubernetesLabels true
-
-
-
-

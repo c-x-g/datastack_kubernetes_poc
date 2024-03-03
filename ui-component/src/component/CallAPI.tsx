@@ -9,11 +9,11 @@ const CMDiv = styled.div`
 `;
 
 type ContainerMetadata = {
-  pod: String;
+  pod_id: String;
   node: String;
   namespace: String;
-  ip_addr: String;
-  svc_account: String;
+  ip_address: String;
+  service_account: String;
 };
 
 let containerMetadata: ContainerMetadata | undefined = undefined;
@@ -43,15 +43,15 @@ function CallAPI() {
         <CMDiv>
           <header>Container Metadata</header>
           <p>
-            Pod id: {containerMetadata?.pod}
+            Pod id: {containerMetadata?.pod_id}
             <br />
             Node: {containerMetadata?.node}
             <br />
             Namespace: {containerMetadata?.namespace}
             <br />
-            IP Address: {containerMetadata?.ip_addr}
+            IP Address: {containerMetadata?.ip_address}
             <br />
-            Service Account: {containerMetadata?.svc_account}
+            Service Account: {containerMetadata?.service_account}
             <br />
           </p>
         </CMDiv>

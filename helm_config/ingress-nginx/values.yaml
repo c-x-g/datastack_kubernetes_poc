@@ -1,0 +1,22 @@
+# The values I have overwritten are: reportNodeInternalIp, enableHttps and http 8080 instead of 80
+
+controller:
+  name: controller
+  # -- Bare-metal considerations via the host network https://kubernetes.github.io/ingress-nginx/deploy/baremetal/#via-the-host-network
+  # Ingress status was blank because there is no Service exposing the Ingress-Nginx Controller in a configuration using the host network, the default --publish-service flag used in standard cloud setups does not apply
+  reportNodeInternalIp: true 
+  allowSnippetAnnotations: true 
+  service:
+    # -- Enable the HTTPS listener on both controller services or not.
+    enableHttps: false 
+    ports:
+      # -- Port the external HTTP listener is published with.
+      # defaults to 80
+      http: 8080
+      # -- Port the external HTTPS listener is published with.
+      https: 443
+    targetPorts:
+      # -- Port of the ingress controller the external HTTP listener is mapped to.
+      http: http
+      # -- Port of the ingress controller the external HTTPS listener is mapped to.
+      https: https

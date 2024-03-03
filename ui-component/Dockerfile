@@ -1,21 +1,14 @@
-FROM node:current-alpine3.17
+FROM node:18-alpine AS builder
+WORKDIR /app
 
-WORKDIR /usr/src/app
-
-COPY package*.json ./
+COPY . .
 
 RUN yarn install
-
-COPY ./src ./src
-COPY ./svelte.config.js ./svelte.config.js
-COPY ./tsconfig.json ./tsconfig.json  
-COPY ./vite.config.ts ./vite.config.ts
-
 RUN yarn build
 
-ARG PORT
+FROM nginx:stable-alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
-ENV PORT=$PORT
-
-CMD HOST=0.0.0.0 PORT=$PORT node build
-
+EXPOSE 8080
+CMD ["nginx", "-g", "daemon off;"]

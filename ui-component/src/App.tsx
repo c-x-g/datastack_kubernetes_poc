@@ -1,8 +1,8 @@
-// import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CallAPI from "./component/CallAPI.tsx";
 import CallTable from "./component/CallTable.tsx";
 import NavBar from "./component/Navbar.tsx";
+import "./component/component.css";
 
 function App() {
   return (
